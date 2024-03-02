@@ -1,0 +1,57 @@
+make sure the followin is installed 
+npm
+aws cli
+aws amplify cli 
+
+npx create-next-app blogapp-course
+nvm use 18
+npm run dev
+Now we create a next js project blogapp-course
+
+Setup tailwindcss
+npm install tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+add the following code to tailwind.config.js 
+            module.exports = {
+        content: [
+            "./pages/**/*.{js,ts,jsx,tsx}",
+            "./components/**/*.{js,ts,jsx,tsx}",
+            // Add more paths here if you have them
+        ],
+        theme: {
+            extend: {},
+        },
+        plugins: [],
+        }
+add the following code to global.css
+        @tailwind base;
+        @tailwind components;
+        @tailwind utilities;
+add the following code to the default return function at page.js 
+        <h1 className="text-3xl font-bold underline">
+      Hello world!
+    </h1>
+https://tailwindcss.com/docs/guides/nextjs
+
+
+AppSync & Amplify 
+amplify init
+    app name and aws profile 
+npm install aws-amplify @aws-amplify/ui-react
+amplify add api
+    ? Select from one of the below mentioned services: GraphQL
+    ? Here is the GraphQL API that we will create. Select a setting to edit or continue Continue
+    ? Choose a schema template: Single object with fields (e.g., “Todo” with ID, name, description)
+this will create amplify project locally and add api and schema file you will need to change the schema file to match the project
+amplify push
+   Category │ Resource name │ Operation │ Provider plugin   │
+  ├──────────┼───────────────┼───────────┼───────────────────┤
+  │ Api      │ blogappcourse │ Create    │ awscloudformation │
+  ? Do you want to generate code for your newly created GraphQL API Yes
+  ? Choose the code generation language target javascript
+  ? Enter the file name pattern of graphql queries, mutations and subscriptions src/graphql/**/*.js
+  ? Do you want to generate/update all possible GraphQL operations - queries, mutations and subscriptions Yes
+  ? Enter maximum statement depth [increase from default if your schema is deeply nested] 2
+amplify console api 
+  this will open the console 
+  there you can experiment the mutation 
